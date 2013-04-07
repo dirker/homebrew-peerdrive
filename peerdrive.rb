@@ -6,7 +6,7 @@ class Peerdrive < Formula
 
   depends_on 'erlang'
   depends_on 'rebar'
-  depends_on 'fuserl'
+  depends_on 'fuse4x'
 
   def install
     system "make"

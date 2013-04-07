@@ -2,7 +2,7 @@ require 'formula'
 
 class Peerdrive < Formula
   homepage 'http://peerdrive.org'
-  head 'https://github.com/dirker/peerdrive.git'
+  head 'https://github.com/dirker/peerdrive.git', :branch => 'osx-support'
 
   depends_on 'erlang'
   depends_on 'rebar'

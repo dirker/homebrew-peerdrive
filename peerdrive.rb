@@ -24,20 +24,9 @@ class Peerdrive < Formula
   end
 
   def caveats; <<-EOS.undent
-    In order to launch the peerdrive server please take the following steps:
+    Make sure you read the configuration: #{etc}/peerdrive.
 
-      1) make sure you read the configuration: #{etc}/peerdrive
-
-      2) Install the launchd entry, like so:
-
-        $ sudo cp -vf #{plist_path} /Library/LaunchDaemons/.
-        $ sudo chown -v root:wheel /Library/LaunchDaemons/#{plist_path.basename}
-
-      3) Start the daemon using:
-
-        $ sudo launchctl load /Library/LaunchDaemons/#{plist_path.basename}
-
-    Next boot of system will automatically start peerdrive.
+    Use 'brew services (start|stop) peerdrive' to manage the peerdrive service.
     EOS
   end
 

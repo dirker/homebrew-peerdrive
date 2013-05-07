@@ -10,7 +10,7 @@ class Peerdrive < Formula
 
   def install
     system "make"
-    system "server/install_osx.sh -p \"#{prefix}\""
+    system "server/install_osx.sh -p '#{prefix}'"
 
     # create global directories ...
     (var+'lib/peerdrive/sys').mkpath
@@ -27,7 +27,7 @@ class Peerdrive < Formula
 
   def patches
     # fix versioning until a real release is available (rebar git versioning
-    # does requires installing from a git repository, but homebrew exports the
+    # does require installing from a git repository, but homebrew exports the
     # tree instead of running from the repo)
     DATA
   end

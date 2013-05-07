@@ -11,6 +11,9 @@ class Peerdrive < Formula
   def install
     system "make"
     system "server/install_osx.sh -p \"#{prefix}\""
+
+    plist_path.write startup_plist
+    plist_path.chmod 0644
   end
 
   def patches

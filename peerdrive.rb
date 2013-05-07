@@ -12,6 +12,15 @@ class Peerdrive < Formula
     system "make"
     system "server/install_osx.sh -p \"#{prefix}\""
 
+    # create global directories ...
+    (var+'lib/peerdrive/sys').mkpath
+    (var+'log/peerdrive').mkpath
+
+    # ... and symlink them into the Cellar in order to keep the data across
+    # peerdrive updates
+    (prefix+'var').rmtree
+    ln_s var, prefix
+
     plist_path.write startup_plist
     plist_path.chmod 0644
   end

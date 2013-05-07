@@ -38,38 +38,40 @@ class Peerdrive < Formula
     EOS
   end
 
-  def startup_plist; <<-EOS.undent
+  def startup_plist; <<-EOPLIST.undent
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
     <dict>
-      <key>KeepAlive</key>
-      <true/>
       <key>Label</key>
       <string>#{plist_name}</string>
+      <key>KeepAlive</key>
+      <true/>
+      <key>RunAtLoad</key>
+      <true/>
       <key>EnvironmentVariables</key>
       <dict>
         <key>HOME</key>
         <string>~</string>
+        <key>PATH</key>
+        <string>/usr/bin:/bin:/usr/sbin:/sbin:#{HOMEBREW_PREFIX}/bin</string>
       </dict>
       <key>ProgramArguments</key>
       <array>
-        <string>#{HOMEBREW_PREFIX}/lib/peerdrive/bin/peerdrive</string>
+        <string>#{opt_prefix}/lib/peerdrive/bin/peerdrive</string>
         <string>foreground</string>
       </array>
-      <key>RunAtLoad</key>
-      <true/>
       <key>UserName</key>
       <string>#{`whoami`.chomp}</string>
       <key>WorkingDirectory</key>
-      <string>#{var}</string>
+      <string>#{var}/lib/peerdrive</string>
       <key>StandardOutPath</key>
       <string>/dev/null</string>
       <key>StandardErrorPath</key>
       <string>/dev/null</string>
     </dict>
     </plist>
-    EOS
+    EOPLIST
   end
 end
 
